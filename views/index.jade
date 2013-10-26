@@ -1,5 +1,37 @@
 extends layout
-
 block content
-  h1= title
-  p Welcome to #{title}
+    #wrap.boxed
+    header#header
+        .container.clearfix.hidden.alertArea
+            .sixteen.columns.alertLayer
+                .alert.error.hideIt.shadowAlert(ng-show="error.show",ng-repeat="error in errors",ng-animate="{show: 'animated bounceInDown', hide: 'animated bounceOut'}")
+                    i.icon-warning-sign
+                    p(ng-bind="error.message")
+                    i.icon-remove.close(ng-click="error.show=false;")
+                .alert.success.hideIt.shadowAlert(ng-show="success.show",ng-repeat="success in successes",ng-animate="{show: 'animated bounceInDown', hide: 'animated bounceOut'}")
+                    i.icon-warning-sign
+                    p(ng-bind="success.message")
+                    i.icon-remove.close(ng-click="success.show=false")
+                .alert.notice.hideIt.shadowAlert(ng-show="notice.show",ng-repeat="notice in notices",ng-animate="{show: 'animated bounceInDown', hide: 'animated bounceOut'}")
+                    i.icon-warning-sign
+                    p(ng-bind="notice.message")
+                    i.icon-remove.close(ng-click="notice.show=false;")
+        .top-bar
+            .container.clearfix
+                .slidedown
+                    .eight.columns
+                        .phone-mail
+                            a
+                                i.icon-phone
+                                | Phone : +415-310-4985
+                            a(href='info@website.com')
+                                i.icon-envelope-alt
+                                | Mail : brian@pjohnson.info
+                    .eight.columns
+                        .social
+                            a(href='#')
+                                i.social_icon-twitter.s-14
+                            a(href='#')
+                                i.social_icon-facebook.s-18
+    div#main(ng-view)
+                       

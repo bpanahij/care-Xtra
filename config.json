@@ -1,0 +1,6 @@
+{
+  "service": "Care-Xtra",
+  "port": 8080,
+  "secret": "the secret to healthcare is social interaction and information",
+  "dbName": "careX"
+}

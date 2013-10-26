@@ -3,7 +3,13 @@ var express = require('express')
 /**
  * loading the main page
  */
-api.get("/", function(req, res) {
-  res.render('index', { title: 'Express' });
-});
+var init = function(req, res, next) {
+  console.log('init');
+  return next();
+};
+var index = function(req, res, next) {
+  res.render('index', {});
+};
+api.all("/", init);
+api.get("/", index);
 module.exports = api;
