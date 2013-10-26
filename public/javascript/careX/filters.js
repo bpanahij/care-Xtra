@@ -1,5 +1,5 @@
 /* Filters */
-angular.module('Passport.filters', [])
+angular.module('CareX.filters', [])
   .filter('tel', [function()
   {
     return function(tel)

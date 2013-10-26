@@ -1,5 +1,5 @@
-var Passport = angular.module('Passport', [
-    'ngResource', 'Passport.filters', 'Passport.services', 'Passport.directives', 'Passport.controllers', 'webStorageModule'
+var Passport = angular.module('CareX', [
+    'ngResource', 'ngGoogleAutoComplete', 'CareX.filters', 'CareX.services', 'CareX.directives', 'CareX.controllers', 'webStorageModule'
   ]).config([
     '$routeProvider', '$rootScopeProvider', function($routeProvider)
     {

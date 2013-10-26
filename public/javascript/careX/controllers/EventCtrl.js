@@ -1,12 +1,49 @@
-angular.module('Passport.controllers').controller('EventCtrl', [
+angular.module('CareX.controllers').controller('EventCtrl', [
   '$scope', 'EventService', '$routeParams', '$location', 'ArkService', function($scope, EventService, $routeParams, $location, ArkService)
   {
     "use strict";
+    var _ = window._;
     var eventId = $routeParams.eventId;
     $scope.event = {
-      email: ''
+      startDate: {},
+      endDate: {},
+      geocode: {}
     };
+    $scope.details = {};
     $scope.publishLabel = 'Preview';
+    $scope.eventTypes = ['medicate', 'exercise', 'eat', 'connect', 'update-doctor'];
+    $scope.frequencies = [
+      {
+        label: 'daily',
+        days: 1
+      },
+      {
+        label: '2 days',
+        days: 2
+      },
+      {
+        label: 'weekly',
+        days: 7
+      }
+    ];
+    $scope.options = {
+      types: 'geocode'
+    };
+    $scope.details = {};
+    $scope.$watch('details', function()
+    {
+      if (!_.isUndefined($scope.details) &&
+        !_.isUndefined($scope.details.geometry) &&
+        !_.isUndefined($scope.details.geometry.location))
+      {
+        $scope.event.geocode = {
+          lat: $scope.details.geometry.location.lat(),
+          long: $scope.details.geometry.location.lng()
+        }
+        $scope.event.locationName = $scope.details.formatted_address;
+        console.log($scope.event);
+      }
+    });
     if (eventId != 0)
     {
       $scope.event._id = eventId;
@@ -15,27 +52,6 @@ angular.module('Passport.controllers').controller('EventCtrl', [
         $scope.event = Event;
       });
     }
-    $scope.event.additional = [];
-    $scope.event.fields = [
-      {
-        keywords: [
-          'name',
-          'fullName'
-        ],
-        placeholder: 'Full Name',
-        type: 'text',
-        accepted: false
-      },
-      {
-        keywords: [
-          'phone',
-          'mobile'
-        ],
-        placeholder: 'Phone',
-        type: 'text',
-        accepted: false
-      }
-    ];
     $scope.myEvents = function()
     {
       $location.path('/admin/events');
@@ -43,23 +59,6 @@ angular.module('Passport.controllers').controller('EventCtrl', [
     $scope.newEvent = function()
     {
       $location.path('/admin/event/0');
-    };
-    $scope.addField = function()
-    {
-      $scope.event.additional.push({
-        keywords: [],
-        placeholder: '',
-        type: 'text',
-        accepted: false
-      });
-      $('#main').css({height: (window.innerHeight * 2) + 'px'});
-      $.scrollTo('200px', 800);
-    };
-    $scope.handleKeywords = function()
-    {
-      var tags = $(event.target).val();
-      var keywords = tags.split(' ');
-      this.field.keywords = keywords;
     };
     $scope.togglePreview = function()
     {
@@ -92,39 +91,4 @@ angular.module('Passport.controllers').controller('EventCtrl', [
         $scope.event = res;
       });
     };
-    $scope.removeAdditional = function()
-    {
-      $scope.event.additional = _.without($scope.event.additional, this.field);
-    };
-    $scope.$watch('lead.email', function(newEmail)
-    {
-      if (newEmail && newEmail.match(/.*@.*\.(com|info|net|org|edu)/))
-      {
-        $scope.validEmail = true;
-        var fields = _.map($scope.lead.fields, function(field)
-        {
-          return field.keywords;
-        });
-        ArkService.arkIt(newEmail, fields, function(err, data)
-        {
-          _.each($scope.lead.fields, function(field)
-          {
-            field.foundValue = false;
-            _.each(data, function(d)
-            {
-              var intersection = _.intersection(_.keys(d), field.keywords)
-              if (intersection.length > 0)
-              {
-                field.value = d[intersection[0]];
-                field.accepted = true;
-              }
-            });
-          });
-        });
-      }
-      else
-      {
-        $scope.validEmail = false;
-      }
-    });
   }]);

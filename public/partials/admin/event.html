@@ -12,23 +12,13 @@
 <div ng-show="!preview" class="container">
   <div class="sixteen columns">
     <form class="form-elements">
-      <input ng-model="event.name" type="text" placeholder="Name your event" class="text leadField" style="width: 90%; font-size: 2em;">
-      <input value="email@address.com" readonly ng-class="{validEmail: validEmail}" type="text" class="leadField">
-
-      <div ng-repeat="field in event.fields">
-        <input ng-model="field.placeholder" ng-class="{validEmail: field.accepted}" type="{{field.type}}" placeholder="{{field.placeholder}}" class="leadField">
-        <!--<i ng-click="removeField()" class="icon-large icon-minus-sign red fieldIcon"></i>-->
-      </div>
-      <div id="divider" class="bottom-1 clearfix"></div>
-      <h3 ng-show="lead.additional.length">Additional Fields</h3>
-
-      <div ng-repeat="field in event.additional">
-        <input ng-model="field.placeholder" type="{{field.type}}" class="leadField leadCheckedField">
-        <i ng-click="removeAdditional()" class="icon-large icon-minus-sign red fieldIcon"></i>
-        <input ng-model="field.tags" ng-keyup="handleKeywords()" type="{{field.type}}" class="leadCheckedField">
-      </div>
-      <div class="bottom-1 clearfix"></div>
-      <i ng-click="addField()" class="icon-plus-sign" style="font-size: 30px;"> Add Field</i>
+      <input ng-model="event.title" type="text" placeholder="Name your event" class="text leadField" style="width: 90%; font-size: 2em;">
+      <select ng-model="event.frequency" ng-options="frequency.days as frequency.label for frequency in frequencies" class="text leadField"></select>
+      <input ng-model="event.endDate.date" type="date" class="text leadField block">
+      <input ng-model="event.endDate.time" type="time" class="text leadField block">
+      <h4 ng-bind="event.locationName"></h4>
+      <input ng-google-auto-complete="event.geocode" details="details" options="options" type="text" class="text leadField">
+      <select ng-model="event.eventType" ng-options="eventType for eventType in eventTypes" class="text leadField"></select>
     </form>
   </div>
 </div>

@@ -1,4 +1,4 @@
-angular.module('Passport.controllers').controller('RegisterCtrl', [
+angular.module('CareX.controllers').controller('RegisterCtrl', [
   '$scope', '$location','UserService', function($scope, $location, UserService)
   {
     "use strict";

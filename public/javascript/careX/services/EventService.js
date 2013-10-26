@@ -1,4 +1,4 @@
-angular.module('Passport.services').factory('EventService', [
+angular.module('CareX.services').factory('EventService', [
   '$resource', function($resource)
   {
     'use strict';

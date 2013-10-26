@@ -9,19 +9,19 @@ doctype 5
 html(lang="en")
     // <![endif]
     head
-        title='Passport EDU'
-        meta(name="description", content="Lead Forms X-treme")
-        meta(name="author", content="Passport Lead-X team")
+        title='Care-Xtra'
+        meta(name="description", content="Care-Xtra")
+        meta(name="author", content="Care-Xtra")
         meta(name="viewport", content="width=device-width, initial-scale=1, maximum-scale=1")
         link(rel="stylesheet", href="stylesheets/css/style.css")
-        link(rel="stylesheet", href="stylesheets/css/skins/colors/red.css", name="colors")
+        link(rel="stylesheet", href="stylesheets/css/skins/colors/green.css", name="colors")
         link(rel="stylesheet", href="stylesheets/css/layout/wide.css", name="layout")
         link(rel="stylesheet", href="stylesheets/css/switcher/style.css")
         link(rel="stylesheet", href="stylesheets/css/animate.min.css")
         //if lt IE 9
             script(src="js/html5.js")
         link(rel="shortcut icon", href="images/favicon.ico")
-    body(ng-app="Passport")
+    body(ng-app="CareX")
         div.overlay
         block content
         script(src="/javascript/libs/qrcode.min.js")
@@ -51,6 +51,7 @@ html(lang="en")
         script(src="/javascript/libs/doubletaptogo.js")
         script(src="/javascript/libs/fancybox/jquery.fancybox.js")
         script(src="/javascript/libs/jquery.sticky.js")
+        script(src="http://maps.googleapis.com/maps/api/js?libraries=places&sensor=false")
         // Services
         script(src="/javascript/careX/services.js")
         script(src="/javascript/careX/services/UserService.js")
@@ -66,5 +67,6 @@ html(lang="en")
         script(src="/javascript/careX/filters.js")
         // Directives
         script(src="/javascript/careX/directives.js")
+        script(src="/javascript/careX/directives/ngGoogleAutoComplete.js")
         // App
         script(src="/javascript/careX/app.js")

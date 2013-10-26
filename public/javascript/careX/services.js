@@ -1,6 +1,6 @@
 /**
  * Services
  */
-angular.module ('Passport.services', [
+angular.module ('CareX.services', [
 	'ngResource', 'ngCookies'
 ]);

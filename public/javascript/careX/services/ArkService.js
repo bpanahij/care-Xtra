@@ -1,4 +1,4 @@
-angular.module('Passport.services').factory('ArkService', [
+angular.module('CareX.services').factory('ArkService', [
   '$resource', function($resource)
   {
     'use strict';

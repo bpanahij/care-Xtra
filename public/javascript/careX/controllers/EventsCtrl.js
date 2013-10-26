@@ -1,4 +1,4 @@
-angular.module('Passport.controllers').controller('EventsCtrl', [
+angular.module('CareX.controllers').controller('EventsCtrl', [
   '$scope', '$rootScope', '$location', '$routeParams', 'EventService', function($scope, $rootScope, $location, $routeParams, EventService)
   {
     "use strict";

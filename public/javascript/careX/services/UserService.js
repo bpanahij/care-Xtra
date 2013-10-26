@@ -1,4 +1,4 @@
-angular.module('Passport.services').factory('UserService', [
+angular.module('CareX.services').factory('UserService', [
   '$resource', '$rootScope', '$cookieStore', function($resource, $rootScope, $cookieStore)
   {
     'use strict';

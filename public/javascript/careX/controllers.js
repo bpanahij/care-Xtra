@@ -1,4 +1,4 @@
 /* Controllers */
-angular.module ('Passport.controllers', [
-	'ngResource', 'Passport.services', 'Passport.filters', 'Passport.directives'
+angular.module ('CareX.controllers', [
+	'ngResource', 'CareX.services', 'CareX.filters', 'CareX.directives'
 ]);

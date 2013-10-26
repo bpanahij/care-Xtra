@@ -1,3 +1,3 @@
 /* Directives */
-angular.module ('Passport.directives', [
+angular.module ('CareX.directives', [
 ]);
